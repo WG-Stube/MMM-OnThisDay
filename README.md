@@ -79,6 +79,7 @@ All options are optional so the module works out of the box.
 |----------------------- |------------
 | `animationSpeed`       | Duration of content refresh animation in seconds.<br><br>**Type:** `Number`<br>**Default:** `1`
 | `updateInterval`       | Time between loading new events data in seconds.<br><br>**Type:** `Number`<br>**Default:** `3600` (1 hour)
+| `updateDelay`          | Time range before midnight without data updates in hours. Eg. use this if you are in a different timezone and want to delay data updates until your local midnight.<br><br>**Type:** `Number`<br>**Default:** `0` (no delay)
 | `maxWidth`             | Max width of the displayed events content.<br><br>**Type:** `String`<br>**Default:** `400px`
 | `textSize`             | CSS class to set the text size, use MagicMirror core classes here<br><br>**Type:** `String`<br>**Default:** `xsmall`
 

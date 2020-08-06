@@ -12,6 +12,7 @@ const moduleDefinition = {
         // Intervals
         animationSpeed: 1,   // 1 sec.
         updateInterval: 3600, // 60 min.
+        updateDelay: 0, // No delay
 
         // Style
         maxWidth: '400px',
@@ -136,8 +137,17 @@ const moduleDefinition = {
     loadEvents: function() {
         Log.info('Load events ...');
 
-        // Load events in node helper
-        this.sendSocketNotification('LOAD_EVENTS', this.usedLanguage);
+        // Update delay applies if current time is between configured hours and midnight
+        const now = new Date();
+        const afterDelay = new Date(now.getTime() + this.config.updateDelay * 60 * 60 * 1000);
+        const delayApplies = now.getDate() !== afterDelay.getDate(); // Compare days
+
+        // Load events in node helper if they were not loaded yet or delay does not apply
+        if (this.events === null || !delayApplies) {
+            this.sendSocketNotification('LOAD_EVENTS', this.usedLanguage);
+        } else {
+            Log.info('Don\'t load new data because of configured update delay.');
+        }
 
         // Schedule next load
         this.scheduleRefresh();

@@ -7,7 +7,7 @@
 `cd ~/MagicMirror/modules`
 
 2. Erweiterung herunterladen und installieren
-- `git clone https://github.com/nkl-kst/MMM-OnThisDay`
+- `git clone https://github.com/WG-Stube/MMM-OnThisDay`
 - `cd MMM-OnThisDay/`
 - `npm install --only=prod`
 
